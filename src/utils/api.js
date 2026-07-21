@@ -16,7 +16,7 @@ const api = axios.create({
 // ─── Request Interceptor — attach auth token ────────────────────────────────
 api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('liquorhub-token');
+    const token = localStorage.getItem('sipandsavor-token');
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -32,8 +32,8 @@ api.interceptors.response.use(
     const status = error.response?.status;
 
     if (status === 401) {
-      localStorage.removeItem('liquorhub-token');
-      localStorage.removeItem('liquorhub-auth');
+      localStorage.removeItem('sipandsavor-token');
+      localStorage.removeItem('sipandsavor-auth');
       window.location.href = '/auth/login';
     }
 

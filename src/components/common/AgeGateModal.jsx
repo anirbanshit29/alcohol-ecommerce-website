@@ -57,11 +57,11 @@ function AgeGateModal({ onVerify }) {
           <div className="flex items-center gap-2 mb-8">
             <div className="w-10 h-10 rounded-xl bg-accent flex items-center justify-center">
               <span className="text-dark-900 font-display font-bold text-lg">
-                LH
+                S&S
               </span>
             </div>
             <span className="text-white font-display font-bold text-xl tracking-tight">
-              Liquor Hub
+              Sip & Savor
             </span>
           </div>
 

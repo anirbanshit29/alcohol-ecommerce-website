@@ -98,7 +98,7 @@ const useAuthStore = create(
       },
     }),
     {
-      name: 'liquorhub-auth',
+      name: 'sipandsavor-auth',
       partialize: (state) => ({
         user: state.user,
         isAuthenticated: state.isAuthenticated,

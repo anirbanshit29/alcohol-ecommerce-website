@@ -90,7 +90,7 @@ export default function Login() {
         {/* Brand Header */}
         <div className="text-center mb-8">
           <div className="w-16 h-16 gradient-primary rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-premium">
-            <span className="text-accent font-bold text-xl font-display">LH</span>
+            <span className="text-accent font-bold text-xl font-display">S&S</span>
           </div>
           <h1 className="text-2xl font-display font-bold text-dark-900">Welcome Back!</h1>
           <p className="text-dark-500 mt-2">Enter your mobile number to continue</p>

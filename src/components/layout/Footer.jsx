@@ -37,11 +37,11 @@ function Footer() {
             <Link to="/" className="inline-flex items-center gap-2.5 mb-5">
               <div className="w-10 h-10 rounded-xl bg-accent flex items-center justify-center">
                 <span className="text-dark-900 font-display font-bold text-lg">
-                  LH
+                  S&S
                 </span>
               </div>
               <span className="text-white font-display font-bold text-xl tracking-tight">
-                Liquor Hub
+                Sip & Savor
               </span>
             </Link>
 
@@ -107,11 +107,11 @@ function Footer() {
             <ul className="space-y-3 mb-6" role="list">
               <li>
                 <a
-                  href="mailto:support@liquorhub.in"
+                  href="mailto:support@sipandsavor.in"
                   className="flex items-center gap-2.5 text-dark-400 text-sm hover:text-accent transition-colors duration-200"
                 >
                   <Mail size={15} className="flex-shrink-0" />
-                  <span>support@liquorhub.in</span>
+                  <span>support@sipandsavor.in</span>
                 </a>
               </li>
               <li>
@@ -156,7 +156,7 @@ function Footer() {
       <div className="border-t border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-dark-500 text-xs">
-            © {currentYear} Liquor Hub. All rights reserved.
+            © {currentYear} Sip & Savor. All rights reserved.
           </p>
           <p className="text-dark-600 text-xs text-center sm:text-right">
             🍷 Please drink responsibly. Not for sale to persons under 21.

@@ -85,15 +85,15 @@ function Navbar() {
           <Link
             to="/"
             className="flex items-center gap-2.5 group flex-shrink-0"
-            aria-label="Liquor Hub home"
+            aria-label="Sip & Savor home"
           >
             <div className="w-9 h-9 rounded-lg bg-accent flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
               <span className="text-dark-900 font-display font-bold text-base">
-                LH
+                S&S
               </span>
             </div>
             <span className="hidden sm:block text-white font-display font-bold text-lg tracking-tight">
-              Liquor Hub
+              Sip & Savor
             </span>
           </Link>
 

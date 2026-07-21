@@ -72,7 +72,7 @@ const useOrderStore = create(
       clearActiveOrder: () => set({ activeOrder: null, trackingStep: 0 }),
     }),
     {
-      name: 'liquorhub-orders',
+      name: 'sipandsavor-orders',
       partialize: (state) => ({ orders: state.orders }),
     }
   )

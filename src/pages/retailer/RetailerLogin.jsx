@@ -68,10 +68,10 @@ export default function RetailerLogin() {
           {/* Logo */}
           <div className="flex items-center gap-3 mb-12">
             <div className="w-12 h-12 bg-accent rounded-xl flex items-center justify-center">
-              <span className="text-primary font-bold text-xl">LH</span>
+              <span className="text-primary font-bold text-xl">S&S</span>
             </div>
             <span className="text-white text-2xl font-display font-bold">
-              Liquor Hub
+              Sip & Savor
             </span>
           </div>
 
@@ -84,7 +84,7 @@ export default function RetailerLogin() {
           </h1>
           <p className="text-white/70 text-lg mb-10 max-w-md">
             Access your dashboard to view real-time analytics, manage inventory,
-            and grow your business with Liquor Hub.
+            and grow your business with Sip & Savor.
           </p>
 
           {/* Feature pills */}
@@ -225,7 +225,7 @@ export default function RetailerLogin() {
               </Button>
 
               <p className="text-xs text-dark-400 text-center mt-5">
-                By continuing, you agree to Liquor Hub's Retailer Terms of Service
+                By continuing, you agree to Sip & Savor's Retailer Terms of Service
               </p>
             </form>
           </div>

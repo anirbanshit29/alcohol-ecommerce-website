@@ -91,7 +91,7 @@ const useCartStore = create(
       },
     }),
     {
-      name: 'liquorhub-cart',
+      name: 'sipandsavor-cart',
       partialize: (state) => ({ items: state.items }),
     }
   )

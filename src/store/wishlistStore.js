@@ -36,7 +36,7 @@ const useWishlistStore = create(
       clearWishlist: () => set({ items: [] }),
     }),
     {
-      name: 'liquorhub-wishlist',
+      name: 'sipandsavor-wishlist',
     }
   )
 );

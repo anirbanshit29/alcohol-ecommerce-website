@@ -77,10 +77,10 @@ export default function Register() {
       <div className="bg-white rounded-2xl shadow-glass-lg p-8 max-w-md w-full animate-scale-in">
         <div className="text-center mb-8">
           <div className="w-16 h-16 gradient-primary rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-premium">
-            <span className="text-accent font-bold text-xl font-display">LH</span>
+            <span className="text-accent font-bold text-xl font-display">S&S</span>
           </div>
           <h1 className="text-2xl font-display font-bold text-dark-900">Create Account</h1>
-          <p className="text-dark-500 mt-2">Join Liquor Hub for premium delivery</p>
+          <p className="text-dark-500 mt-2">Join Sip & Savor for premium delivery</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
