@@ -7,7 +7,7 @@ async function testEndpoint(name, path, method = 'GET', body = null, headers = {
   return new Promise((resolve) => {
     const options = {
       hostname: '127.0.0.1',
-      port: 5000,
+      port: 5001,
       path: path,
       method: method,
       headers: {
