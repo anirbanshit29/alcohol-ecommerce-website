@@ -4,7 +4,8 @@ import {
   ArrowLeft, Heart, Share2, Star, Minus, Plus, ShoppingCart,
   Store, MapPin, Truck, Shield, ChevronRight,
 } from 'lucide-react';
-import { getProductById, getProductReviews, getProductsByCategory, stores } from '../data/mockData';
+import useProductStore from '../store/productStore';
+import { stores } from '../data/mockData';
 import { formatCurrency, formatDate } from '../utils/helpers';
 import useCartStore from '../store/cartStore';
 import useWishlistStore from '../store/wishlistStore';
@@ -14,8 +15,11 @@ import ProductCard from '../components/product/ProductCard';
 export default function ProductDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const getProductById = useProductStore((s) => s.getProductById);
+  const allProducts = useProductStore((s) => s.products);
+  
   const product = getProductById(id);
-  const reviews = getProductReviews(id);
+  const reviews = []; // Removed mock reviews
 
   const addItem = useCartStore((s) => s.addItem);
   const toggleItem = useWishlistStore((s) => s.toggleItem);
@@ -27,8 +31,8 @@ export default function ProductDetails() {
 
   const similarProducts = useMemo(() => {
     if (!product) return [];
-    return getProductsByCategory(product.category).filter((p) => p.id !== product.id).slice(0, 6);
-  }, [product]);
+    return allProducts.filter((p) => p.category === product.category && p.id !== product.id).slice(0, 6);
+  }, [product, allProducts]);
 
   const store = product ? stores.find((s) => s.id === product.storeId) : null;
 
@@ -55,6 +59,11 @@ export default function ProductDetails() {
   const handleAddToCart = () => {
     for (let i = 0; i < quantity; i++) addItem(product);
     toast.success(`${product.name} added to cart`);
+  };
+
+  const handleOrderNow = () => {
+    for (let i = 0; i < quantity; i++) addItem(product);
+    navigate('/checkout');
   };
 
   const handleToggleWishlist = () => {
@@ -227,18 +236,25 @@ export default function ProductDetails() {
             </div>
 
             {/* Action Buttons */}
-            <div className="flex gap-3">
+            <div className="flex flex-col sm:flex-row gap-3">
+              <button
+                onClick={handleOrderNow}
+                disabled={!product.inStock}
+                className="flex-1 flex items-center justify-center gap-2 bg-accent hover:bg-accent-600 text-dark-900 font-bold py-4 px-6 rounded-xl transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <span>⚡ Order Now</span>
+              </button>
               <button
                 onClick={handleAddToCart}
                 disabled={!product.inStock}
-                className="flex-1 flex items-center justify-center gap-2 bg-primary hover:bg-primary-800 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold py-4 rounded-xl transition-all duration-200 hover:shadow-premium"
+                className="flex-1 flex items-center justify-center gap-2 bg-primary hover:bg-primary-800 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold py-4 px-6 rounded-xl transition-all duration-200 hover:shadow-premium"
               >
                 <ShoppingCart className="w-5 h-5" />
                 Add to Cart
               </button>
               <button
                 onClick={handleToggleWishlist}
-                className={`w-14 h-14 flex items-center justify-center rounded-xl border-2 transition-all duration-200 ${
+                className={`w-14 h-14 flex items-center justify-center rounded-xl border-2 transition-all duration-200 flex-shrink-0 ${
                   isWishlisted
                     ? 'border-red-200 bg-red-50 text-red-500'
                     : 'border-dark-200 bg-white text-dark-400 hover:border-red-300 hover:text-red-500'
@@ -248,7 +264,7 @@ export default function ProductDetails() {
               </button>
               <button
                 onClick={handleShare}
-                className="w-14 h-14 flex items-center justify-center rounded-xl border-2 border-dark-200 bg-white text-dark-400 hover:border-primary-300 hover:text-primary transition"
+                className="w-14 h-14 flex items-center justify-center rounded-xl border-2 border-dark-200 bg-white text-dark-400 hover:border-primary-300 hover:text-primary transition flex-shrink-0"
               >
                 <Share2 className="w-5 h-5" />
               </button>

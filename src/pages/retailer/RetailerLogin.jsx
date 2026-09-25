@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import Button from '../../components/common/Button';
 import { cn } from '../../utils/helpers';
+import api from '../../api';
 
 export default function RetailerLogin() {
   const [phone, setPhone] = useState('');
@@ -28,7 +29,7 @@ export default function RetailerLogin() {
     { icon: BarChart3, text: 'Boost sales with analytics' },
   ];
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
 
@@ -36,23 +37,19 @@ export default function RetailerLogin() {
       setError('Please enter a valid 10-digit mobile number');
       return;
     }
-    if (password.length < 4) {
-      setError('Password must be at least 4 characters');
-      return;
-    }
 
     setLoading(true);
 
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      const res = await api.post('/retailer/login', { phone });
       setLoading(false);
-      localStorage.setItem('retailerToken', 'retailer-dummy-token');
-      localStorage.setItem(
-        'retailer',
-        JSON.stringify({ phone, storeName: 'Royal Spirits' })
-      );
+      localStorage.setItem('retailerToken', res.data.token);
+      localStorage.setItem('retailer', JSON.stringify(res.data.shop));
       navigate('/retailer/dashboard');
-    }, 1200);
+    } catch (err) {
+      setLoading(false);
+      setError('Login failed. Please check your credentials.');
+    }
   };
 
   return (
